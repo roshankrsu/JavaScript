@@ -50,4 +50,45 @@ promiseFour.then((user) => {
    console.log(username);
 }).catch(function(error){
     console.log(error);
+}).finally(() => console.log("the promise is either resolve or rejected"))
+
+
+const promiseFive = new Promise(function(resolve, reject){
+setTimeout(function(){
+        let error = false;
+        if(!error){
+         resolve({username:"javascript",password:"923u290"})
+        }else{
+          reject('ERROR: JS went wrong')
+        }
+    },1000)
+});
+
+async function consumePromiseFive(){
+    const responce = await promiseFive
+    console.log(responce);
+}
+
+consumePromiseFive()
+
+// async function getAllUsers(){
+//     try {
+//        const responce = await fetch('https://jsonplaceholder.typicode.com/users')
+       
+//        const data = await responce.json()
+//        console.log(data);
+//     } catch (error) {
+//         console.log("E: ",error);
+//     }
+// }
+
+// getAllUsers()
+
+fetch('https://api.github.com/users/roshankrsu')
+.then((responce) => {
+    return responce.json()
 })
+.then((data) => {
+    console.log(data);
+})
+.catch((error) => console.log(error))
