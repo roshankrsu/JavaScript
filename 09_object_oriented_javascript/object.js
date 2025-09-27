@@ -14,9 +14,14 @@ function createUser(username, score){
 }
 
 createUser.prototype.increment = function(){
-    score++
+    this.score++
 }
 
-const roshan = createUser("roshan", 21)
-const tyler = createUser("tyler", 34)
+createUser.prototype.printMe = function(){
+    console.log(`score is ${this.score}`)
+}
 
+const roshan = new createUser("roshan", 21)
+const tyler = new createUser("tyler", 34)
+
+roshan.printMe()
